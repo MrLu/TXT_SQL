@@ -4,9 +4,9 @@ var connectionConfige = {
    user : 'root',
    paseword : '',
    database : 'Dic'
-}
-var connection = mysql.createConnection(connectionConfige)
+};
 
+var connection = mysql.createConnection(connectionConfige);
 connection.connect(function(err){
     if (err) {
         console.error('error connecting: ' + err.stack);
@@ -14,4 +14,7 @@ connection.connect(function(err){
       }
      
       console.log('connected as id ' + connection.threadId);
-})
+});
+
+
+module.exports.query = connection.query;
