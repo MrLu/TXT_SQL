@@ -6,6 +6,8 @@ var connectionConfige = {
    database : 'Dic'
 };
 
+var mysql_connection = {};
+
 var connection = mysql.createConnection(connectionConfige);
 connection.connect(function(err){
     if (err) {
@@ -16,5 +18,9 @@ connection.connect(function(err){
       console.log('connected as id ' + connection.threadId);
 });
 
+mysql_connection.query = function(sql,values,callback) {
+    return connection.query(sql,values,callback);
+}
 
-module.exports.query = connection.query;
+
+module.exports = mysql_connection;
